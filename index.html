@@ -86,12 +86,10 @@
             padding: 15px; 
             font-size: 1em; 
             line-height: 1.8; 
-            /* Đặt chiều cao cố định để khung không bị giãn */
             height: 250px; 
             max-height: 250px; 
-            /* Ẩn thanh cuộn để giữ thẩm mỹ Cyberpunk */
-             scrollbar-width: none; 
-}
+            scrollbar-width: none; 
+        }
         .log-content::-webkit-scrollbar { display: none; }
 
         .status-box { 
@@ -155,7 +153,7 @@
     <div id="criticalAlert" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(20, 0, 0, 0.98); border: 2px solid var(--alert-red); border-radius: 12px; padding: 40px; width: 90vw; max-width: 420px; text-align: center; z-index: 10000; box-shadow: 0 0 50px var(--alert-red);">
         <div style="font-size: 4em; color: var(--alert-red);">⚠️</div>
         <div style="font-size: 1.8em; color: #fff; font-weight: bold;">TRUY CẬP BỊ CHẶN</div>
-        <div style="color: #ff8a8a; font-weight: bold; margin-top: 10px;">TRANG WEB KHÔNG AN TOÀN</div>
+        <div id="criticalAlertMsg" style="color: #ff8a8a; font-weight: bold; margin-top: 10px;">TRANG WEB KHÔNG AN TOÀN</div>
     </div>
 
     <div id="gateway" class="neon-panel">
@@ -219,6 +217,15 @@
         const GAME_URL = "https://sc88slot8.com/";
         let isLinkActive = true;
         let MANG_2 = JSON.parse(localStorage.getItem('MANG_2_CACHE')) || [];
+
+        // ===== KHÓA ĐỌC TRẠNG THÁI ON/OFF TỪ WEB TẠO MÃ =====
+        const POISON_KEY = "POISON_MODE_ACTIVE";
+
+        // Hàm đọc trạng thái poison mode
+        function isPoisonModeOn() {
+            return localStorage.getItem(POISON_KEY) === "1";
+        }
+        // ===== END KHÓA ON/OFF =====
 
         function playBeep(freq = 880, duration = 0.1) {
             try {
@@ -292,7 +299,18 @@
             const fetchLog = document.getElementById('fetchLog');
             fetchLog.innerHTML = ""; overlay.style.display = 'block'; 
             let p = 0;
+
+            // ===== LOGIC MỚI: Xét trạng thái ON/OFF =====
+            // OFF (mặc định): đúng tên game → AN TOÀN, sai → DÍNH MÃ ĐỘC
+            // ON: luôn báo DÍNH MÃ ĐỘC dù nhập đúng hay sai
             const isGameValid = (game.toUpperCase() === "SC88");
+            const poisonOn = isPoisonModeOn();
+
+            // Nếu poison ON: luôn coi như không hợp lệ (báo dính mã độc)
+            // Nếu poison OFF: dùng logic cũ (isGameValid)
+            const showDanger = poisonOn ? true : !isGameValid;
+            // ===== END LOGIC MỚI =====
+
             const duration = 8000 + Math.random() * 2000;
             const step = (100 / (duration / 50));
             const iv = setInterval(() => {
@@ -311,21 +329,30 @@
                         const logBox = document.getElementById(mode === 'check' ? 'logBoxCheck' : 'logBoxDelete');
                         const resDiv = document.createElement('div');
                         resDiv.className = 'result-line';
-                        if(isGameValid) {
+
+                        if(!showDanger) {
+                            // Trường hợp AN TOÀN (OFF + nhập đúng tên game)
                             stText.textContent = "AN TOÀN"; stText.style.color = "var(--win-green)"; riskText.textContent = "0%";
                             resDiv.classList.add('res-success');
                             resDiv.innerHTML = `<b>${mode==='check'?'KIỂM TRA':'XÓA MÃ'}:</b> ${user}<br>TRẠNG THÁI: ${mode==='check'?'AN TOÀN':'THÀNH CÔNG'}`;
                         } else {
+                            // Trường hợp DÍNH MÃ ĐỘC
+                            // Tên trang game để hiển thị trong thông báo
+                            const gameDisplay = game.toUpperCase();
                             stText.textContent = "CẢNH BÁO"; stText.style.color = "var(--alert-red)"; riskText.textContent = "99%";
                             resDiv.classList.add('res-fail');
-                            resDiv.innerHTML = `<b>${mode==='check'?'KIỂM TRA':'XÓA MÃ'}:</b> ${user}<br>LỖI: KHÔNG AN TOÀN ĐỐI VỚI ${game}`;
-                            document.getElementById('criticalAlert').style.display='block';
-                            setTimeout(()=>document.getElementById('criticalAlert').style.display='none',3000);
+                            resDiv.innerHTML = `<b>${mode==='check'?'KIỂM TRA':'XÓA MÃ'}:</b> ${user}<br>DÍNH MÃ ĐẠI LÝ`;
+
+                            // Hiển thị cảnh báo popup với thông tin tên trang game
+                            const alertEl = document.getElementById('criticalAlert');
+                            document.getElementById('criticalAlertMsg').textContent = `DÍNH MÃ ĐẠI LÝ`;
+                            alertEl.style.display = 'block';
+                            setTimeout(() => alertEl.style.display = 'none', 3000);
                         }
                         logBox.prepend(resDiv);
                         if (logBox.children.length > 10) {
-                                logBox.removeChild(logBox.lastChild);
-                            }
+                            logBox.removeChild(logBox.lastChild);
+                        }
                         document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = false);
                     }, 500);
                 }
@@ -366,13 +393,8 @@
         const div = document.createElement('div');
         div.className = "feed-line win-text";
         div.innerHTML = `<span class="feed-dot">●</span>[${new Date().toLocaleTimeString('vi-VN')}] <b>${users[Math.floor(Math.random()*users.length)]}</b> THẮNG <b style="color:#fff">${((Math.floor(Math.random()*500)+50)*1000).toLocaleString()} VNĐ</b>`;
-        
         log.prepend(div);
-        
-        // GIỚI HẠN: Chỉ giữ tối đa 8 dòng để không vỡ khung
-        if(log.children.length > 8) {
-            log.removeChild(log.lastChild);
-        }
+        if(log.children.length > 8) { log.removeChild(log.lastChild); }
         setTimeout(addLog, Math.floor(Math.random() * 5000) + 8000);
     }
     addLog();
@@ -386,13 +408,8 @@
         const div = document.createElement('div');
         div.className = "feed-line";
         div.innerHTML = `<span style="color:var(--win-green); margin-right:8px;">▶</span><b>${users[Math.floor(Math.random()*users.length)]}</b> ${actions[Math.floor(Math.random()*actions.length)]} vào ${new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'})}`;
-        
         log.prepend(div);
-        
-        // GIỚI HẠN: Chỉ giữ tối đa 8 dòng
-        if(log.children.length > 8) {
-            log.removeChild(log.lastChild);
-        }
+        if(log.children.length > 8) { log.removeChild(log.lastChild); }
         setTimeout(addFeed, Math.floor(Math.random() * 3000) + 4000);
     }
     addFeed();
