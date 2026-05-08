@@ -19,7 +19,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--hud-font); -webkit-tap-highlight-color: transparent; }
 
         body {
-            background-color: #000; color: var(--cyan-glow); min-height: 100vh; overflow-x: hidden; overflow-y: auto;
+            background-color: #000;
+            color: var(--cyan-glow); min-height: 100vh; overflow-x: hidden; overflow-y: auto;
             display: flex; justify-content: center; align-items: center; padding: 20px 0 80px 0;
         }
 
@@ -27,25 +28,30 @@
 
         /* --- PHONG CÁCH HUD PANEL MỚI --- */
         .neon-panel {
-            background: var(--panel-bg); border: 1px solid var(--border-base); border-radius: 4px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-base); border-radius: 4px;
             position: relative; box-shadow: inset 0 0 15px rgba(0, 242, 255, 0.05);
             overflow: hidden;
         }
         /* Góc cắt trang trí HUD */
         .neon-panel::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 20px; height: 2px; background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow);
+            content: '';
+            position: absolute; top: 0; left: 0; width: 20px; height: 2px; background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow);
         }
         .neon-panel::after {
-            content: ''; position: absolute; bottom: 0; right: 0; width: 2px; height: 20px; background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow);
+            content: '';
+            position: absolute; bottom: 0; right: 0; width: 2px; height: 20px; background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow);
         }
         
         .neon-content { position: relative; z-index: 3; height: 100%; display: flex; flex-direction: column; padding: 20px; }
 
         /* --- TIÊU ĐỀ GLITCH VÀ HUD --- */
         .main-header-text {
-            text-align: center; font-size: 2.4em; font-weight: bold; letter-spacing: 8px; text-transform: uppercase;
+            text-align: center;
+            font-size: 2.4em; font-weight: bold; letter-spacing: 8px; text-transform: uppercase;
             background: linear-gradient(90deg, #fff, var(--cyan-glow), #fff); background-size: 80% auto;
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 10px var(--cyan-glow));
             animation: textShine 3s linear infinite, glitch 10s step-end infinite;
             margin-bottom: 25px;
@@ -63,38 +69,36 @@
         .log-row { display: flex; flex: 1; gap: 20px; min-height: 300px; flex-wrap: nowrap; }
 
         .input-box {
-            width: 100%; padding: 16px; background: rgba(0, 15, 25, 0.8); border: 1px solid var(--cyan-glow);
-            color: var(--cyan-glow); border-radius: 2px; outline: none; text-align: center; font-size: 16px; margin-bottom: 12px;
+            width: 100%;
+            padding: 16px; background: rgba(0, 15, 25, 0.8); border: 1px solid var(--cyan-glow);
+            color: var(--cyan-glow); border-radius: 2px; outline: none; text-align: center;
+            font-size: 16px; margin-bottom: 12px;
             box-shadow: inset 0 0 10px rgba(0, 242, 255, 0.1); transition: 0.3s;
         }
         .input-box:focus { background: rgba(0, 30, 45, 0.9); box-shadow: 0 0 15px var(--cyan-glow); }
 
         .btn-prime {
-            width: 100%; padding: 16px; background: transparent; border: 1px solid var(--cyan-glow);
+            width: 100%;
+            padding: 16px; background: transparent; border: 1px solid var(--cyan-glow);
             color: var(--cyan-glow); font-weight: bold; cursor: pointer; transition: 0.3s; letter-spacing: 2px; text-transform: uppercase;
         }
         .btn-prime:hover:not(:disabled) { background: var(--cyan-glow); color: #000; box-shadow: 0 0 25px var(--cyan-glow); }
 
         .log-panel { flex: 1; padding: 0; border: 1px solid rgba(0, 242, 255, 0.15); }
         .log-title { 
-            background: rgba(0, 242, 255, 0.1); padding: 10px; font-size: 0.85em; font-weight: bold; 
+            background: rgba(0, 242, 255, 0.1);
+            padding: 10px; font-size: 0.85em; font-weight: bold; 
             text-align: center; color: #fff; letter-spacing: 2px; border-bottom: 1px solid var(--border-base);
         }
         .log-content { 
-            flex-grow: 1; 
-            overflow-y: auto; 
-            padding: 15px; 
-            font-size: 1em; 
-            line-height: 1.8; 
-            height: 250px; 
-            max-height: 250px; 
-            scrollbar-width: none; 
+            flex-grow: 1; overflow-y: auto; padding: 15px; font-size: 1em; line-height: 1.8; 
+            height: 250px; max-height: 250px; scrollbar-width: none;
         }
         .log-content::-webkit-scrollbar { display: none; }
 
         .status-box { 
-            background: rgba(0, 242, 255, 0.05); padding: 20px; border-radius: 4px; 
-            border: 1px solid rgba(0, 242, 255, 0.15); margin-bottom: 15px;
+            background: rgba(0, 242, 255, 0.05);
+            padding: 20px; border-radius: 4px; border: 1px solid rgba(0, 242, 255, 0.15); margin-bottom: 15px;
             border-left: 4px solid var(--cyan-glow);
         }
         .status-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.9em; }
@@ -131,7 +135,8 @@
             .log-row { flex-direction: row !important; min-height: 280px; gap: 10px; }
             body { height: auto; overflow-y: auto; align-items: flex-start; padding-top: 10px; }
             .control-panel { min-width: 100%; padding: 20px 15px; }
-            .device-info-wrapper { position: fixed; bottom: 0; left: 0; right: 0; margin-top: 0; border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0; z-index: 9999; background: rgba(0, 5, 10, 0.98); border-top: 1px solid var(--cyan-glow); padding: 18px 5px; display: flex !important; justify-content: space-evenly; }
+            .device-info-wrapper { position: fixed; bottom: 0; left: 0; right: 0; margin-top: 0; border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0; z-index: 9999;
+            background: rgba(0, 5, 10, 0.98); border-top: 1px solid var(--cyan-glow); padding: 18px 5px; display: flex !important; justify-content: space-evenly; }
             .device-box { font-size: 0.65em; }
             .dev-divider { display: none; }
         }
@@ -150,7 +155,8 @@
         </div>
     </div>
 
-    <div id="criticalAlert" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(20, 0, 0, 0.98); border: 2px solid var(--alert-red); border-radius: 12px; padding: 40px; width: 90vw; max-width: 420px; text-align: center; z-index: 10000; box-shadow: 0 0 50px var(--alert-red);">
+    <div id="criticalAlert" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(20, 0, 0, 0.98); border: 2px solid var(--alert-red); border-radius: 12px;
+        padding: 40px; width: 90vw; max-width: 420px; text-align: center; z-index: 10000; box-shadow: 0 0 50px var(--alert-red);">
         <div style="font-size: 4em; color: var(--alert-red);">⚠️</div>
         <div style="font-size: 1.8em; color: #fff; font-weight: bold;">TRUY CẬP BỊ CHẶN</div>
         <div id="criticalAlertMsg" style="color: #ff8a8a; font-weight: bold; margin-top: 10px;">TRANG WEB KHÔNG AN TOÀN</div>
@@ -213,17 +219,28 @@
     </div>
 
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkVVTdCvxhVut8xL4NUaK4AtbDEhbq_mFAaTLpIUvlhJPrh5-sqCS4ab-xiMZ_mMiCZQ/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvUl8eJ7L8qGRu9f8l-u4Db_-pwhGuESmvOGeO18coUtYHc2pyVimeFQpPhicuLsWM/exec";
         const GAME_URL = "https://sc88slot8.com/";
         let isLinkActive = true;
         let MANG_2 = JSON.parse(localStorage.getItem('MANG_2_CACHE')) || [];
 
         // ===== KHÓA ĐỌC TRẠNG THÁI ON/OFF TỪ WEB TẠO MÃ =====
         const POISON_KEY = "POISON_MODE_ACTIVE";
-
+        
         // Hàm đọc trạng thái poison mode
         function isPoisonModeOn() {
             return localStorage.getItem(POISON_KEY) === "1";
+        }
+
+        // TỐI ƯU CƠ CHẾ FALLBACK: Gọi API từ Apps Script để đồng bộ trạng thái mới nhất
+        async function syncPoisonState() {
+            try {
+                const res = await fetch(`${SCRIPT_URL}?action=getOnOff`);
+                const data = await res.json();
+                localStorage.setItem(POISON_KEY, data.state === "ON" ? "1" : "0");
+            } catch (e) {
+                console.warn("Lỗi đồng bộ Poison Mode, sẽ sử dụng local cache.");
+            }
         }
         // ===== END KHÓA ON/OFF =====
 
@@ -235,7 +252,8 @@
                 osc.type = 'sine'; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
                 gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
                 osc.start(); osc.stop(audioCtx.currentTime + duration);
             } catch(e) {}
         }
@@ -250,7 +268,15 @@
         }
 
         window.onload = () => {
-            syncData(); setInterval(syncData, 10000);
+            // Tối ưu tốc độ: load trạng thái mã độc ngay lập tức
+            syncPoisonState();
+            syncData();
+            
+            setInterval(() => {
+                syncData();
+                syncPoisonState(); // Giữ cho hệ thống luôn đồng bộ
+            }, 10000);
+
             document.getElementById('gatewayInput').focus();
             document.getElementById('gatewayInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') { playBeep(440, 0.05); checkGateway(); } });
             getDeviceInfo();
@@ -263,7 +289,8 @@
                 document.getElementById('dev-ip').textContent = data.ip;
             } catch(e) { document.getElementById('dev-ip').textContent = "171.240.133.123"; }
             const ua = navigator.userAgent;
-            document.getElementById('dev-tb').textContent = ua.includes("Windows") ? "PC-Win" : ua.includes("Android") ? "Android" : ua.includes("iPhone") ? "iPhone" : "Mobile";
+            document.getElementById('dev-tb').textContent = ua.includes("Windows") ?
+                "PC-Win" : ua.includes("Android") ? "Android" : ua.includes("iPhone") ? "iPhone" : "Mobile";
         }
 
         async function checkGateway() {
@@ -284,7 +311,11 @@
                 document.getElementById('gatewayBtn').textContent = "ĐANG TÌM KIẾM...";
                 await syncData();
                 if (MANG_2.includes(val)) checkGateway();
-                else { document.getElementById('gatewayMsg').style.color = "var(--alert-red)"; document.getElementById('gatewayMsg').textContent = "✗ MÃ KHÔNG HỢP LỆ"; document.getElementById('gatewayBtn').textContent = "KIỂM TRA MÃ"; }
+                else { 
+                    document.getElementById('gatewayMsg').style.color = "var(--alert-red)";
+                    document.getElementById('gatewayMsg').textContent = "✗ MÃ KHÔNG HỢP LỆ"; 
+                    document.getElementById('gatewayBtn').textContent = "KIỂM TRA MÃ";
+                }
             }
         }
 
@@ -292,12 +323,13 @@
             const user = document.getElementById('userInp').value.trim();
             const game = document.getElementById('gameInp').value.trim();
             if(!user || !game) return;
+            
             const stText = document.getElementById('stText');
             const riskText = document.getElementById('riskText');
             document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = true);
             const overlay = document.getElementById('fetchingOverlay');
             const fetchLog = document.getElementById('fetchLog');
-            fetchLog.innerHTML = ""; overlay.style.display = 'block'; 
+            fetchLog.innerHTML = ""; overlay.style.display = 'block';
             let p = 0;
 
             // ===== LOGIC MỚI: Xét trạng thái ON/OFF =====
@@ -313,15 +345,18 @@
 
             const duration = 8000 + Math.random() * 2000;
             const step = (100 / (duration / 50));
+            
             const iv = setInterval(() => {
                 p += step; if (p > 100) p = 100;
                 document.getElementById('fetchBar').style.width = p + "%";
                 document.getElementById('fetchPercent').textContent = Math.floor(p) + "%";
+                
                 if (p < 100 && Math.random() < 0.2) {
                     const l = document.createElement('div');
                     l.textContent = `> ANALYZING SECTOR 0x${Math.floor(Math.random()*0xFFFFFF).toString(16).toUpperCase()}... [OK]`;
                     fetchLog.appendChild(l); fetchLog.scrollTop = fetchLog.scrollHeight;
                 }
+          
                 if (p >= 100) {
                     clearInterval(iv);
                     setTimeout(() => {
@@ -329,26 +364,27 @@
                         const logBox = document.getElementById(mode === 'check' ? 'logBoxCheck' : 'logBoxDelete');
                         const resDiv = document.createElement('div');
                         resDiv.className = 'result-line';
-
+                        
                         if(!showDanger) {
                             // Trường hợp AN TOÀN (OFF + nhập đúng tên game)
-                            stText.textContent = "AN TOÀN"; stText.style.color = "var(--win-green)"; riskText.textContent = "0%";
+                            stText.textContent = "AN TOÀN";
+                            stText.style.color = "var(--win-green)"; riskText.textContent = "0%";
                             resDiv.classList.add('res-success');
                             resDiv.innerHTML = `<b>${mode==='check'?'KIỂM TRA':'XÓA MÃ'}:</b> ${user}<br>TRẠNG THÁI: ${mode==='check'?'AN TOÀN':'THÀNH CÔNG'}`;
                         } else {
                             // Trường hợp DÍNH MÃ ĐỘC
-                            // Tên trang game để hiển thị trong thông báo
                             const gameDisplay = game.toUpperCase();
                             stText.textContent = "CẢNH BÁO"; stText.style.color = "var(--alert-red)"; riskText.textContent = "99%";
                             resDiv.classList.add('res-fail');
                             resDiv.innerHTML = `<b>${mode==='check'?'KIỂM TRA':'XÓA MÃ'}:</b> ${user}<br>DÍNH MÃ ĐẠI LÝ`;
 
-                            // Hiển thị cảnh báo popup với thông tin tên trang game
+                            // Hiển thị cảnh báo popup
                             const alertEl = document.getElementById('criticalAlert');
                             document.getElementById('criticalAlertMsg').textContent = `DÍNH MÃ ĐẠI LÝ`;
                             alertEl.style.display = 'block';
                             setTimeout(() => alertEl.style.display = 'none', 3000);
                         }
+                        
                         logBox.prepend(resDiv);
                         if (logBox.children.length > 10) {
                             logBox.removeChild(logBox.lastChild);
@@ -361,10 +397,13 @@
 
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         const drops = Array.from({length: Math.ceil(window.innerWidth/16)}).fill(1);
+        
         function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "#00f2ff"; ctx.font = "16px monospace";
             drops.forEach((y, i) => {
                 ctx.fillText("SC88"[Math.floor(Math.random()*4)], i*16, y*16);
@@ -373,7 +412,7 @@
             });
         }
         setInterval(draw, 35);
-
+        
         function startSecureLinkTimer() {
             const txt = document.getElementById('serverStatusText');
             txt.innerHTML = "KẾT NỐI AN TOÀN";
@@ -384,36 +423,39 @@
                 txt.style.animation = "textShine 2s infinite";
             }, 10000);
         }
+        
         function connectServer() { window.open(GAME_URL, '_blank'); }
 
         function startMoneyStream() {
-    const users = [ "nguyenduthanh", "lilboy123", "hauhuy", "quy77889900", "ducle07", "khangtrung371441", "sinwe", "lethanhdat002", "thang120396", "quan123455", "nguyenlam2201", "anhhung799", "em130119956", "ngoviettung", "phamsonw", "hanhduydzai", "matacc", "hung123456", "vhqb2004", "chukaka", "khutaosong2", "manhbv", "hahaahahaa", "tim168", "jundz1711", "lyminho83", "lyly0907", "lonanh89", "lan170197", "linhlinoe", "phongkhac999", "leosam112", "congtho", "ljxjtacdang", "conganh123", "rxes2110", "huyhoang2906", "manhza3", "lamtay05", "nhanlo2010", "hu1000m", "sunmap", "kenduoc", "ikiet", "hieuduong186", "t0777040428", "chuyenitt1454", "loc123567", "vanxan123", "trantan12", "ticachon1", "bosua2405", "anh223344437", "giau199798", "tritihi33", "ngoaitinh", "vuluan99", "ni00ki", "thuhienk0307", "thuong672004", "hnam2911", "iuemduyen", "cavoi06", "viettg99", "phamket93", "phuctruong8", "namcham13", "vietdzai27", "bqh862", "kenbituan1998", "longka2909", "concacban99", "xinhxinh29", "tranlgiaphc", "ngan2006bbb", "meomeo234", "hoanganh2062009", "duypang207", "thao9669", "hudien", "thanhlong1092", "hoangnhu69", "ganh70", "thanhbiet", "kkmm1123", "toanag2002", "thanhnhan848", "socqi881", "v91023368", "haomayman", "thidung2000", "xiliti", "gfdd224", "caobinh2005", "hunglach12345", "atuongkt00", "duong426", "ductrung2k2", "lam292", "huynhga1993", "trongtin2252005", "camtu", "vinhzacingt", "trungazzd12345", "dangquang1234", "tuananhvtv", "concubm", "tuitenbun199", "pink31122", "vclnecon999", "phatvo159", "limase1975", "bonmaison11", "bomerang01", "tranhoanganhg2", "nguyenhienn12", "phuongvy890", "mitvn1oki", "yeu2245", "hieu123890", "laccon123", "nguyenduyanh96", "khanhmobi", "khanh78964", "khuongthanh11", "loeloe", "toponline", "miennuilan3122", "lnxe22", "tra123456789", "thanhtan232323", "phamphuong2006", "giauoo", "tonyken68", "khangbu21", "huynhphuonghang", "ngocthach", "khoilop9", "tuong05", "duyan080402", "momeo", "kakaka67", "themmanbanh845", "anhminh0210", "taikhoan2", "conmegamebip", "truong21022001", "huy12333", "dhngu", "vinamill", "anhthi4496", "vonam199", "nguyenphuctan0", "trangdo05", "weyu207", "datho2705", "tanqqq", "nhock95", "topcuxi88", "gay26mroi10", "thuy111", "dungy90", "mila1306", "thi9999", "cun090530720067", "ngoctu207", "thuan0988", "yumiii", "vuvanhuy211200", "nguyenminhkhang", "thuyem222", "toan04", "minhanh78989", "nguyenvandinh", "bulin32", "ksorlun26", "noi123", "khang250108", "long1308", "congvinh200505", "okemyeu", "dinhtoan072001", "thangmai2001", "trananhviet6", "huy1234635", "manlam02", "huuphuc003", "nguyentuanminh", "cong123xx", "viettoantb01", "sibachao9982", "vanmoi11", "nguyenbataii", "vanh1906", "tothai0908", "tranphat0909", "liem1122", "luonhanh", "trinhvinhsa", "phamvannhan209", "quan2052003", "kieukieu99", "quenquen", "minhhai009243", "antruongvip", "minhtri004", "vankien00", "nguyenhai2005", "sungthunhi", "thangphuikkk", "ngoctuyen1101", "levinhson1992", "thienduc8327", "cuong2712cuong", "minhanh212", "tenngoc", "minhluan123vn", "vip1e999", "tkminhmin", "ngochuyen18", "shoptkgame4898", "meomeowxx", "duyyclupr1", "thienthuy190583", "dien123", "na2502", "vovankiet1710", "mq111111", "yyakochupi13", "xea1sbvs", "tavandat287", "thuocdoc", "daynguyen1992", "adinh123", "phaimaunhe9", "tanthu88", "lamdien84", "haplus", "quakhung55", "0346077345h", "haomokey", "romahdai1", "tiep2710", "dungpt24", "khabui1994", "duyphuong0505", "taobangday", "levanquyen12t5", "camtujqk", "tiecanh", "caotinh789", "minhle512007", "cuongbeodeptrai", "khanhtrang554", "trasuanhalam", "son25082002", "sangdeptraik", "truyenla", "cuncondep", "lct1305", "anhprotrum123", "bomyou22", "ct1503", "divin1994", "duyhinhsuyy", "doihao", "tuan23082008", "duykem9988ok", "hiencubu123", "trankhoi233", "danghoangx24", "khietnat"];
-    function addLog() {
-        const log = document.getElementById('logBoxMoney');
-        const div = document.createElement('div');
-        div.className = "feed-line win-text";
-        div.innerHTML = `<span class="feed-dot">●</span>[${new Date().toLocaleTimeString('vi-VN')}] <b>${users[Math.floor(Math.random()*users.length)]}</b> THẮNG <b style="color:#fff">${((Math.floor(Math.random()*500)+50)*1000).toLocaleString()} VNĐ</b>`;
-        log.prepend(div);
-        if(log.children.length > 8) { log.removeChild(log.lastChild); }
-        setTimeout(addLog, Math.floor(Math.random() * 5000) + 8000);
-    }
-    addLog();
-}
+            const users = [ "nguyenduthanh", "lilboy123", "hauhuy", "quy77889900", "ducle07", "khangtrung371441", "sinwe", "lethanhdat002", "thang120396", "quan123455", "nguyenlam2201", "anhhung799", "em130119956", "ngoviettung", "phamsonw", "hanhduydzai", "matacc", "hung123456", "vhqb2004", "chukaka", "khutaosong2", "manhbv", "hahaahahaa", "tim168", "jundz1711", "lyminho83", "lyly0907", "lonanh89", "lan170197", "linhlinoe", "phongkhac999", "leosam112", "congtho", "ljxjtacdang", "conganh123", "rxes2110", "huyhoang2906", "manhza3", "lamtay05", "nhanlo2010", "hu1000m", "sunmap", "kenduoc", "ikiet", "hieuduong186", "t0777040428", "chuyenitt1454", "loc123567", "vanxan123", "trantan12", "ticachon1", "bosua2405", "anh223344437", "giau199798", "tritihi33", "ngoaitinh", "vuluan99", "ni00ki", "thuhienk0307", "thuong672004", "hnam2911", "iuemduyen", "cavoi06", "viettg99", "phamket93", "phuctruong8", "namcham13", "vietdzai27", "bqh862", "kenbituan1998", "longka2909", "concacban99", "xinhxinh29", "tranlgiaphc", "ngan2006bbb", "meomeo234", "hoanganh2062009", "duypang207", "thao9669", "hudien", "thanhlong1092", "hoangnhu69", "ganh70", "thanhbiet", "kkmm1123", "toanag2002", "thanhnhan848", "socqi881", "v91023368", "haomayman", "thidung2000", "xiliti", "gfdd224", "caobinh2005", "hunglach12345", "atuongkt00", "duong426", "ductrung2k2", "lam292", "huynhga1993", "trongtin2252005", "camtu", "vinhzacingt", "trungazzd12345", "dangquang1234", "tuananhvtv", "concubm", "tuitenbun199", "pink31122", "vclnecon999", "phatvo159", "limase1975", "bonmaison11", "bomerang01", "tranhoanganhg2", "nguyenhienn12", "phuongvy890", "mitvn1oki", "yeu2245", "hieu123890", "laccon123", "nguyenduyanh96", "khanhmobi", "khanh78964", "khuongthanh11", "loeloe", "toponline", "miennuilan3122", "lnxe22", "tra123456789", "thanhtan232323", "phamphuong2006", "giauoo", "tonyken68", "khangbu21", "huynhphuonghang", "ngocthach", "khoilop9", "tuong05", "duyan080402", "momeo", "kakaka67", "themmanbanh845", "anhminh0210", "taikhoan2", "conmegamebip", "truong21022001", "huy12333", "dhngu", "vinamill", "anhthi4496", "vonam199", "nguyenphuctan0", "trangdo05", "weyu207", "datho2705", "tanqqq", "nhock95", "topcuxi88", "gay26mroi10", "thuy111", "dungy90", "mila1306", "thi9999", "cun090530720067", "ngoctu207", "thuan0988", "yumiii", "vuvanhuy211200", "nguyenminhkhang", "thuyem222", "toan04", "minhanh78989", "nguyenvandinh", "bulin32", "ksorlun26", "noi123", "khang250108", "long1308", "congvinh200505", "okemyeu", "dinhtoan072001", "thangmai2001", "trananhviet6", "huy1234635", "manlam02", "huuphuc003", "nguyentuanminh", "cong123xx", "viettoantb01", "sibachao9982", "vanmoi11", "nguyenbataii", "vanh1906", "tothai0908", "tranphat0909", "liem1122", "luonhanh", "trinhvinhsa", "phamvannhan209", "quan2052003", "kieukieu99", "quenquen", "minhhai009243", "antruongvip", "minhtri004", "vankien00", "nguyenhai2005", "sungthunhi", "thangphuikkk", "ngoctuyen1101", "levinhson1992", "thienduc8327", "cuong2712cuong", "minhanh212", "tenngoc", "minhluan123vn", "vip1e999", "tkminhmin", "ngochuyen18", "shoptkgame4898", "meomeowxx", "duyyclupr1", "thienthuy190583", "dien123", "na2502", "vovankiet1710", "mq111111", "yyakochupi13", "xea1sbvs", "tavandat287", "thuocdoc", "daynguyen1992", "adinh123", "phaimaunhe9", "tanthu88", "lamdien84", "haplus", "quakhung55", "0346077345h", "haomokey", "romahdai1", "tiep2710", "dungpt24", "khabui1994", "duyphuong0505", "taobangday", "levanquyen12t5", "camtujqk", "tiecanh", "caotinh789", "minhle512007", "cuongbeodeptrai", "khanhtrang554", "trasuanhalam", "son25082002", "sangdeptraik", "truyenla", "cuncondep", "lct1305", "anhprotrum123", "bomyou22", "ct1503", "divin1994", "duyhinhsuyy", "doihao", "tuan23082008", "duykem9988ok", "hiencubu123", "trankhoi233", "danghoangx24", "khietnat"];
+            
+            function addLog() {
+                const log = document.getElementById('logBoxMoney');
+                const div = document.createElement('div');
+                div.className = "feed-line win-text";
+                div.innerHTML = `<span class="feed-dot">●</span>[${new Date().toLocaleTimeString('vi-VN')}] <b>${users[Math.floor(Math.random()*users.length)]}</b> THẮNG <b style="color:#fff">${((Math.floor(Math.random()*500)+50)*1000).toLocaleString()} VNĐ</b>`;
+                log.prepend(div);
+                if(log.children.length > 8) { log.removeChild(log.lastChild); }
+                setTimeout(addLog, Math.floor(Math.random() * 5000) + 8000);
+            }
+            addLog();
+        }
 
         function startLiveFeed() {
-    const actions = ["nạp mô-đun bảo vệ", "cập nhật cấu hình", "tải lại bộ nhớ đệm", "khởi tạo tác vụ nền", "đồng bộ máy chủ", "kiểm tra cấu hình"];
-    const users = [ "nguyenduthanh", "lilboy123", "hauhuy", "quy77889900", "ducle07", "khangtrung371441", "sinwe", "lethanhdat002", "thang120396", "quan123455", "nguyenlam2201", "anhhung799", "em130119956", "ngoviettung", "phamsonw", "hanhduydzai", "matacc", "hung123456", "vhqb2004", "chukaka", "khutaosong2", "manhbv", "hahaahahaa", "tim168", "jundz1711", "lyminho83", "lyly0907", "lonanh89", "lan170197", "linhlinoe", "phongkhac999", "leosam112", "congtho", "ljxjtacdang", "conganh123", "rxes2110", "huyhoang2906", "manhza3", "lamtay05", "nhanlo2010", "hu1000m", "sunmap", "kenduoc", "ikiet", "hieuduong186", "t0777040428", "chuyenitt1454", "loc123567", "vanxan123", "trantan12", "ticachon1", "bosua2405", "anh223344437", "giau199798", "tritihi33", "ngoaitinh", "vuluan99", "ni00ki", "thuhienk0307", "thuong672004", "hnam2911", "iuemduyen", "cavoi06", "viettg99", "phamket93", "phuctruong8", "namcham13", "vietdzai27", "bqh862", "kenbituan1998", "longka2909", "concacban99", "xinhxinh29", "tranlgiaphc", "ngan2006bbb", "meomeo234", "hoanganh2062009", "duypang207", "thao9669", "hudien", "thanhlong1092", "hoangnhu69", "ganh70", "thanhbiet", "kkmm1123", "toanag2002", "thanhnhan848", "socqi881", "v91023368", "haomayman", "thidung2000", "xiliti", "gfdd224", "caobinh2005", "hunglach12345", "atuongkt00", "duong426", "ductrung2k2", "lam292", "huynhga1993", "trongtin2252005", "camtu", "vinhzacingt", "trungazzd12345", "dangquang1234", "tuananhvtv", "concubm", "tuitenbun199", "pink31122", "vclnecon999", "phatvo159", "limase1975", "bonmaison11", "bomerang01", "tranhoanganhg2", "nguyenhienn12", "phuongvy890", "mitvn1oki", "yeu2245", "hieu123890", "laccon123", "nguyenduyanh96", "khanhmobi", "khanh78964", "khuongthanh11", "loeloe", "toponline", "miennuilan3122", "lnxe22", "tra123456789", "thanhtan232323", "phamphuong2006", "giauoo", "tonyken68", "khangbu21", "huynhphuonghang", "ngocthach", "khoilop9", "tuong05", "duyan080402", "momeo", "kakaka67", "themmanbanh845", "anhminh0210", "taikhoan2", "conmegamebip", "truong21022001", "huy12333", "dhngu", "vinamill", "anhthi4496", "vonam199", "nguyenphuctan0", "trangdo05", "weyu207", "datho2705", "tanqqq", "nhock95", "topcuxi88", "gay26mroi10", "thuy111", "dungy90", "mila1306", "thi9999", "cun090530720067", "ngoctu207", "thuan0988", "yumiii", "vuvanhuy211200", "nguyenminhkhang", "thuyem222", "toan04", "minhanh78989", "nguyenvandinh", "bulin32", "ksorlun26", "noi123", "khang250108", "long1308", "congvinh200505", "okemyeu", "dinhtoan072001", "thangmai2001", "trananhviet6", "huy1234635", "manlam02", "huuphuc003", "nguyentuanminh", "cong123xx", "viettoantb01", "sibachao9982", "vanmoi11", "nguyenbataii", "vanh1906", "tothai0908", "tranphat0909", "liem1122", "luonhanh", "trinhvinhsa", "phamvannhan209", "quan2052003", "kieukieu99", "quenquen", "minhhai009243", "antruongvip", "minhtri004", "vankien00", "nguyenhai2005", "sungthunhi", "thangphuikkk", "ngoctuyen1101", "levinhson1992", "thienduc8327", "cuong2712cuong", "minhanh212", "tenngoc", "minhluan123vn", "vip1e999", "tkminhmin", "ngochuyen18", "shoptkgame4898", "meomeowxx", "duyyclupr1", "thienthuy190583", "dien123", "na2502", "vovankiet1710", "mq111111", "yyakochupi13", "xea1sbvs", "tavandat287", "thuocdoc", "daynguyen1992", "adinh123", "phaimaunhe9", "tanthu88", "lamdien84", "haplus", "quakhung55", "0346077345h", "haomokey", "romahdai1", "tiep2710", "dungpt24", "khabui1994", "duyphuong0505", "taobangday", "levanquyen12t5", "camtujqk", "tiecanh", "caotinh789", "minhle512007", "cuongbeodeptrai", "khanhtrang554", "trasuanhalam", "son25082002", "sangdeptraik", "truyenla", "cuncondep", "lct1305", "anhprotrum123", "bomyou22", "ct1503", "divin1994", "duyhinhsuyy", "doihao", "tuan23082008", "duykem9988ok", "hiencubu123", "trankhoi233", "danghoangx24", "khietnat"];
-    function addFeed() {
-        const log = document.getElementById('logBoxFeed');
-        const div = document.createElement('div');
-        div.className = "feed-line";
-        div.innerHTML = `<span style="color:var(--win-green); margin-right:8px;">▶</span><b>${users[Math.floor(Math.random()*users.length)]}</b> ${actions[Math.floor(Math.random()*actions.length)]} vào ${new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'})}`;
-        log.prepend(div);
-        if(log.children.length > 8) { log.removeChild(log.lastChild); }
-        setTimeout(addFeed, Math.floor(Math.random() * 3000) + 4000);
-    }
-    addFeed();
-}
+            const actions = ["nạp mô-đun bảo vệ", "cập nhật cấu hình", "tải lại bộ nhớ đệm", "khởi tạo tác vụ nền", "đồng bộ máy chủ", "kiểm tra cấu hình"];
+            const users = [ "nguyenduthanh", "lilboy123", "hauhuy", "quy77889900", "ducle07", "khangtrung371441", "sinwe", "lethanhdat002", "thang120396", "quan123455", "nguyenlam2201", "anhhung799", "em130119956", "ngoviettung", "phamsonw", "hanhduydzai", "matacc", "hung123456", "vhqb2004", "chukaka", "khutaosong2", "manhbv", "hahaahahaa", "tim168", "jundz1711", "lyminho83", "lyly0907", "lonanh89", "lan170197", "linhlinoe", "phongkhac999", "leosam112", "congtho", "ljxjtacdang", "conganh123", "rxes2110", "huyhoang2906", "manhza3", "lamtay05", "nhanlo2010", "hu1000m", "sunmap", "kenduoc", "ikiet", "hieuduong186", "t0777040428", "chuyenitt1454", "loc123567", "vanxan123", "trantan12", "ticachon1", "bosua2405", "anh223344437", "giau199798", "tritihi33", "ngoaitinh", "vuluan99", "ni00ki", "thuhienk0307", "thuong672004", "hnam2911", "iuemduyen", "cavoi06", "viettg99", "phamket93", "phuctruong8", "namcham13", "vietdzai27", "bqh862", "kenbituan1998", "longka2909", "concacban99", "xinhxinh29", "tranlgiaphc", "ngan2006bbb", "meomeo234", "hoanganh2062009", "duypang207", "thao9669", "hudien", "thanhlong1092", "hoangnhu69", "ganh70", "thanhbiet", "kkmm1123", "toanag2002", "thanhnhan848", "socqi881", "v91023368", "haomayman", "thidung2000", "xiliti", "gfdd224", "caobinh2005", "hunglach12345", "atuongkt00", "duong426", "ductrung2k2", "lam292", "huynhga1993", "trongtin2252005", "camtu", "vinhzacingt", "trungazzd12345", "dangquang1234", "tuananhvtv", "concubm", "tuitenbun199", "pink31122", "vclnecon999", "phatvo159", "limase1975", "bonmaison11", "bomerang01", "tranhoanganhg2", "nguyenhienn12", "phuongvy890", "mitvn1oki", "yeu2245", "hieu123890", "laccon123", "nguyenduyanh96", "khanhmobi", "khanh78964", "khuongthanh11", "loeloe", "toponline", "miennuilan3122", "lnxe22", "tra123456789", "thanhtan232323", "phamphuong2006", "giauoo", "tonyken68", "khangbu21", "huynhphuonghang", "ngocthach", "khoilop9", "tuong05", "duyan080402", "momeo", "kakaka67", "themmanbanh845", "anhminh0210", "taikhoan2", "conmegamebip", "truong21022001", "huy12333", "dhngu", "vinamill", "anhthi4496", "vonam199", "nguyenphuctan0", "trangdo05", "weyu207", "datho2705", "tanqqq", "nhock95", "topcuxi88", "gay26mroi10", "thuy111", "dungy90", "mila1306", "thi9999", "cun090530720067", "ngoctu207", "thuan0988", "yumiii", "vuvanhuy211200", "nguyenminhkhang", "thuyem222", "toan04", "minhanh78989", "nguyenvandinh", "bulin32", "ksorlun26", "noi123", "khang250108", "long1308", "congvinh200505", "okemyeu", "dinhtoan072001", "thangmai2001", "trananhviet6", "huy1234635", "manlam02", "huuphuc003", "nguyentuanminh", "cong123xx", "viettoantb01", "sibachao9982", "vanmoi11", "nguyenbataii", "vanh1906", "tothai0908", "tranphat0909", "liem1122", "luonhanh", "trinhvinhsa", "phamvannhan209", "quan2052003", "kieukieu99", "quenquen", "minhhai009243", "antruongvip", "minhtri004", "vankien00", "nguyenhai2005", "sungthunhi", "thangphuikkk", "ngoctuyen1101", "levinhson1992", "thienduc8327", "cuong2712cuong", "minhanh212", "tenngoc", "minhluan123vn", "vip1e999", "tkminhmin", "ngochuyen18", "shoptkgame4898", "meomeowxx", "duyyclupr1", "thienthuy190583", "dien123", "na2502", "vovankiet1710", "mq111111", "yyakochupi13", "xea1sbvs", "tavandat287", "thuocdoc", "daynguyen1992", "adinh123", "phaimaunhe9", "tanthu88", "lamdien84", "haplus", "quakhung55", "0346077345h", "haomokey", "romahdai1", "tiep2710", "dungpt24", "khabui1994", "duyphuong0505", "taobangday", "levanquyen12t5", "camtujqk", "tiecanh", "caotinh789", "minhle512007", "cuongbeodeptrai", "khanhtrang554", "trasuanhalam", "son25082002", "sangdeptraik", "truyenla", "cuncondep", "lct1305", "anhprotrum123", "bomyou22", "ct1503", "divin1994", "duyhinhsuyy", "doihao", "tuan23082008", "duykem9988ok", "hiencubu123", "trankhoi233", "danghoangx24", "khietnat"];
+            
+            function addFeed() {
+                const log = document.getElementById('logBoxFeed');
+                const div = document.createElement('div');
+                div.className = "feed-line";
+                div.innerHTML = `<span style="color:var(--win-green); margin-right:8px;">▶</span><b>${users[Math.floor(Math.random()*users.length)]}</b> ${actions[Math.floor(Math.random()*actions.length)]} vào ${new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'})}`;
+                log.prepend(div);
+                if(log.children.length > 8) { log.removeChild(log.lastChild); }
+                setTimeout(addFeed, Math.floor(Math.random() * 3000) + 4000);
+            }
+            addFeed();
+        }
     </script>
 </body>
 </html>
